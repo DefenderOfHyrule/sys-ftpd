@@ -26,8 +26,10 @@ void initPads()
     padInitializeAny(&pad);
 }
 
-void inputPoller()
+void inputPoller(void *arg)
 {
+    (void)arg;
+
     do
     {
         padUpdate(&pad);
@@ -54,6 +56,7 @@ void inputPoller()
         svcSleepThread(1e+8);
     } while (inputThreadRunning);
 }
+
 
 const char* buttons[] = {
     "A",

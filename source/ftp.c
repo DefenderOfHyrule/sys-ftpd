@@ -27,14 +27,14 @@
 #include <time.h>
 #include <unistd.h>
 #ifdef _3DS
-#    include <3ds.h>
-#    define lstat stat
+#include <3ds.h>
+#define lstat stat
 #elif defined(__SWITCH__)
-#    include <switch.h>
-#    define lstat stat
+#include <switch.h>
+#define lstat stat
 #else
-#    include <stdbool.h>
-#    define BIT(x) (1 << (x))
+#include <stdbool.h>
+#define BIT(x) (1 << (x))
 #endif
 #include "console.h"
 #include "led.h"
@@ -42,10 +42,10 @@
 
 #define POLL_UNKNOWN (~(POLLIN | POLLPRI | POLLOUT))
 
-#define XFER_BUFFERSIZE 0x4000
-#define SOCK_BUFFERSIZE 0x4000
-#define FILE_BUFFERSIZE 0x8000
-#define CMD_BUFFERSIZE 0x1000
+#define XFER_BUFFERSIZE 16384
+#define SOCK_BUFFERSIZE 16384
+#define FILE_BUFFERSIZE 32768
+#define CMD_BUFFERSIZE 4096
 
 int LISTEN_PORT;
 //#define LISTEN_PORT 5000
